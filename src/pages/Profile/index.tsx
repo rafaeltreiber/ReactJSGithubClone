@@ -1,7 +1,9 @@
 import React from 'react';
 
- import { Container, Main, LeftSide, RightSide } from './styles';
+ import { Container, Main, LeftSide, RightSide, Repos, CalendarHeading } from './styles';
  import ProfileData from '../../components/ProfileData';
+ import RepoCard from '../../components/RepoCard';
+ import RandomCalendar from '../../components/RandomCalendar';
 
 const Profile: React.FC = () => {
   return (
@@ -21,7 +23,26 @@ const Profile: React.FC = () => {
           />
 
         </LeftSide>
-        <RightSide></RightSide>
+        <RightSide>
+          <Repos>
+            <h2>Random repos</h2>
+            <div>{[ 1, 2, 3, 4, 5, 6 ].map(n => (
+              <RepoCard 
+              key = {n}
+              username = {'rafaeltreiber'}
+              reponame = {'segredo'}
+              description = {'Joguinho para aprender Ionic + Firebase'}
+              language = {n % 3 === 0 ? 'Javascript' : 'TypeScript'}
+              stars = {8}
+              forks = {4}
+              />
+            ))}</div>
+          </Repos>
+          <CalendarHeading>
+            Calendário randômico. Não representa dados reais
+          </CalendarHeading>
+          <RandomCalendar />
+        </RightSide>
       </Main>
     </Container>
   );
